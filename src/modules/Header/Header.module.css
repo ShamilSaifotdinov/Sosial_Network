@@ -1,0 +1,9 @@
+.Header {
+    margin: 20px 0;
+    width: 100%;
+    height: 100px;
+    background-color: #009D91;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}

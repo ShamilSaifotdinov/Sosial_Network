@@ -1,0 +1,70 @@
+.ProfileUserPosts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+.ProfileUserPosts .CreateNewPost {
+    margin: 1% 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    height: auto;
+}
+
+.ProfileUserPosts .CreateNewPost .InputField {
+    margin: 1%;
+    width: 100%;
+    min-height: 50px;
+    height: auto;
+    background-color: rgb(218, 218, 218);;
+}
+
+.ProfileUserPosts .CreateNewPost .SubmitButton {
+    cursor: pointer;
+    align-self: flex-end;
+    width: 10%;
+    height: 30px;
+    color: white;
+    text-transform: uppercase;
+    background-color: #D2006B;
+}
+
+.ProfileUserPosts .AllPosts {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 90%;
+}
+
+.ProfileUserPosts .AllPosts .Post {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 1% 0;
+    width: 100%;
+    height: auto;
+}
+.ProfileUserPosts .Post img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin: 1%;
+    border: 5px solid #009D91;
+    transition: 1s;
+}
+
+.ProfileUserPosts .Post img:hover {
+    border: 5px solid #D2006B;
+    transition: 1s;
+}
+
+.ProfileUserPosts .Post .UserPostMessage {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    width: 90%;
+    height: 100%;
+}

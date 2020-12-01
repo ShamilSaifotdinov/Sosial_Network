@@ -1,0 +1,24 @@
+.UserInformation {
+    width: 70%;
+    height: auto;
+}
+
+.UserInformation .UserName {
+    height: 30%;
+    border-bottom: 5px solid #009D91;
+    font-size: 24px;
+}
+
+.UserInformation .UserSubInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.UserInformation .UserSubInfo span {
+    line-height: 2;
+    font-size: 24px;
+}
+
+.UserInformation .Inf {
+    color: #009D91;
+}

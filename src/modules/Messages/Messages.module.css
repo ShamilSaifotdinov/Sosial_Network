@@ -1,0 +1,8 @@
+.Messages {
+    width: 75%;
+    height: 800px;
+    margin: 0 0 0 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
