@@ -1,10 +1,11 @@
 .Profile {
     width: 75%;
-    height: auto;
+    height: 89vh;
     background-color: white;
     margin: 0 0 0 5%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    overflow: scroll;
 }

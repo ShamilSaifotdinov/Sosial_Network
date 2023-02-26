@@ -1,11 +1,11 @@
 import React from 'react';
 import c from "./UserInformation.module.css";
 
-const UserInformation = () => {
+const UserInformation = ({displayName}) => {
   return (
     <div className={c.UserInformation}>
         <div className={c.UserName}>
-            <h2>Анонимный Анонимус Анонимусович</h2>
+            <h2>{displayName}</h2>
             <span className={c.status}>Статус пользователя</span>
         </div>
         <div className={c.UserSubInfo}>

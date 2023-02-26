@@ -1,8 +1,7 @@
 .App {
-  width: 80%;
-  margin: 0 auto;
-  display: flex;
+  /* width: 80%; */
   flex-wrap: wrap;
+  height: 100vh;
 }
 
 ::-webkit-scrollbar {
@@ -13,4 +12,10 @@
 ::-webkit-scrollbar-thumb {
   width: 8px;
   background-image: -webkit-linear-gradient(#D2006B, #D2006B);
+}
+.wrapper {
+  width: 1170px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
 }
