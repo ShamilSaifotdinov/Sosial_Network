@@ -35,6 +35,9 @@ export default function Login() {
                 if (errorCode === "auth/email-already-in-use") {
                     alert("Такой пользователь уже существует!");
                 }
+                else {
+                    alert(errorMessage)
+                }
                 console.log(`${errorCode}: ${errorMessage}`)
             });
     }
