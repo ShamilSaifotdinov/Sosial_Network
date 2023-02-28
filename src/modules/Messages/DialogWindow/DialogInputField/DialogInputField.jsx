@@ -2,12 +2,23 @@ import React, { useState } from 'react';
 import c from "./DialogInputField.module.css";
 import Send from "./../../../../img/Send.png"
 
+import { auth, db } from "../../../../hook/firebase";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+
 const DialogInputField = () => {
   const [message, setMessage] = useState("");
-  const SendMessage = (event) => {
+  const SendMessage = async (event) => {
     event.preventDefault()
     if (message) {      
       console.log(message)
+      
+      const { uid, displayName, photoURL } = auth.currentUser;
+      await addDoc(collection(db, "messages"), {
+        text: message,
+        name: displayName,
+        createdAt: serverTimestamp(),
+        uid,
+      });
       setMessage("");
     }
   }

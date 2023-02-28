@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
 import { getAuth } from "firebase/auth";
+import { doc, setDoc, getDoc } from "firebase/firestore"; 
+import { db } from "../../../hook/firebase"
+
 import c from "./ProfileUserInfo.module.css";
 import UserAvatar from "./UserAvatar/UserAvatar";
 import UserInformation from "./UserInformation/UserInformation"
@@ -8,7 +12,34 @@ const ProfileUserInfo = () => {
   const auth = getAuth();
   const user = auth.currentUser;
 
-  console.log(user.providerData[0])
+  const [ info, setInfo ] = useState({    
+    Name: user.displayName ? user.displayName : "",
+    photoURL: user.photoURL ? user.photoURL : "",
+    birthday: "",
+    city: "",
+    employment: "",
+    status: ""
+  });
+
+  // console.log(info)
+
+  useEffect(() => {
+    async function fetchData () {
+        const docSnap = await getDoc(doc(db, "users", user.uid));
+        if (docSnap.exists()) {
+            console.log("Document data:", docSnap.data());
+            setInfo({
+                ...info,
+                ...docSnap.data()
+            })
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+    }
+    fetchData()
+}, [])
+
   /*
   if (user !== null) {
     user.providerData.forEach((profile) => {
@@ -23,7 +54,7 @@ const ProfileUserInfo = () => {
   return (
     <div className={c.ProfileUserInfo}>
         <UserAvatar />
-        <UserInformation {...user.providerData[0]} />
+        <UserInformation {...info} />
     </div>
   );
 }
