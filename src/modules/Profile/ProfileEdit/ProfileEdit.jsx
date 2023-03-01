@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import { db } from "../../../hook/firebase"
 import { getAuth, updateProfile } from "firebase/auth";
-import { doc, setDoc, getDoc } from "firebase/firestore"; 
+import { doc, setDoc, getDoc } from "firebase/firestore";
 
 const ProfileEdit = () => {
     const auth = getAuth();

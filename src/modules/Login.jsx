@@ -58,6 +58,9 @@ export default function Login() {
                 if (errorCode === "auth/wrong-password") {
                     alert("Неверный логин или пароль!");
                 }
+                if (errorCode === "auth/user-not-found") {
+                    alert("Такого пользователя еще не существует!");
+                }
                 else {
                     alert("Ошибка (см. F12)");
                 }

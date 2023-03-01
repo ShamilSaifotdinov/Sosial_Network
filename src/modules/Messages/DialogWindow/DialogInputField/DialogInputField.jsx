@@ -5,19 +5,19 @@ import Send from "./../../../../img/Send.png"
 import { auth, db } from "../../../../hook/firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
-const DialogInputField = () => {
+const DialogInputField = ({dialogId}) => {
   const [message, setMessage] = useState("");
+
   const SendMessage = async (event) => {
     event.preventDefault()
     if (message) {      
       console.log(message)
       
-      const { uid, displayName, photoURL } = auth.currentUser;
-      await addDoc(collection(db, "messages"), {
+      const { uid } = auth.currentUser;
+      await addDoc(collection(db, `chats/${dialogId}`, "messages"), {
         text: message,
-        name: displayName,
-        createdAt: serverTimestamp(),
-        uid,
+        time: serverTimestamp(),
+        uid
       });
       setMessage("");
     }
