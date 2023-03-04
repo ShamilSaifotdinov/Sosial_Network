@@ -1,9 +1,10 @@
+import c from "../UserContacts/UserContacts.module.css";
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import { db } from "../../../hook/firebase"
 import { collection, query, where, getDocs } from "firebase/firestore";
 
-const DialogSearch = ({url}) => {
+const DialogSearch = () => {
     const [users, setUsers] = useState([])
 
     const handleChange = async (value) => {
@@ -32,7 +33,7 @@ const DialogSearch = ({url}) => {
                 {
                     users
                         ? users.map(user =>
-                            <li><NavLink to={`${url}/${user.uid}`}>{user.Name}</NavLink></li>)
+                            <li><NavLink to={`/${user.uid}`} activeClassName={c.active}>{user.Name}</NavLink></li>)
                         : <></>
                 }
             </ul>

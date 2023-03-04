@@ -5,27 +5,38 @@ import Send from "./../../../../img/Send.png"
 import { auth, db } from "../../../../hook/firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
-const DialogInputField = ({dialogId}) => {
+const DialogInputField = ({chatId, createChat}) => {
   const [message, setMessage] = useState("");
 
   const SendMessage = async (event) => {
     event.preventDefault()
-    if (message) {      
-      console.log(message)
-      
-      const { uid } = auth.currentUser;
-      await addDoc(collection(db, `chats/${dialogId}`, "messages"), {
-        text: message,
-        time: serverTimestamp(),
-        uid
-      });
-      setMessage("");
-    }
+    try {
+      if (!chatId) { chatId = await createChat() }
+      if (message) {      
+        console.log(message)
+        
+        const { uid } = auth.currentUser;
+        await addDoc(collection(db, `chats/${chatId}`, "messages"), {
+          text: message,
+          time: serverTimestamp(),
+          uid
+        });
+        setMessage("");
+      }
+    } catch (error) {
+      console.error(error)
+    }    
   }
 
   return (
     <form className={c.DialogInputField} onSubmit={(event) => SendMessage(event)} >
-      <input type="text"  className={c.InputField} value={message} placeholder="Напишите сообщение..." onChange={(e) => setMessage(e.target.value)} />
+      <input 
+        type="text" 
+        className={c.InputField} 
+        value={message} 
+        placeholder="Напишите сообщение..." 
+        onChange={(e) => setMessage(e.target.value)} 
+      />
       <input type="submit" className={c.Send} value="Отправить" />
     </form>
   );

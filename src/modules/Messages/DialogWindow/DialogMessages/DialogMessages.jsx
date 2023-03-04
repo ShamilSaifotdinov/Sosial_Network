@@ -9,7 +9,7 @@ const DialogMessages = ({ messages }) => {
   return (
     <div className={c.DialogMessages}>
       {
-        messages.map(message => <DialogMessage {...message} />)
+        messages.map(message => <DialogMessage key={message.id} {...message} />)
       }
     </div>
   );
