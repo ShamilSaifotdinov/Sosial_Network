@@ -41,7 +41,7 @@ export default function Register() {
                 displayName: form.Name
                 // photoURL: form.photoURL
             })
-            navigate.push("/profile");
+            navigate.push("/edit");
         } catch (error) {
             const errorCode = error.code;
             const errorMessage = error.message;
