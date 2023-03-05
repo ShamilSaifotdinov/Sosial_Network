@@ -1,16 +1,19 @@
 .Header {
     height: 60px;
     margin: 0;
+    min-width: 1170px;
     margin-bottom: 20px;
     background-color: #009D91;
 }
 
 .Header_wrapper {
     margin: 0 auto;
+    padding: 0 4rem;
+    box-sizing: border-box;
     width: 1170px;
     height: 100%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
 }
 

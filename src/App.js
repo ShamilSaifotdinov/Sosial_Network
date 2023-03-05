@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import { BrowserRouter, Redirect, Route } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./hook/firebase";
@@ -36,8 +36,10 @@ const App = () => {
               </div>
             </div>
             : <>
-              <Route path="/" component={Login} />
-              <Route path="/register" component={Register} />
+              <Switch>
+                <Route path="/register" component={Register} />
+                <Route path="*" component={Login} />
+              </Switch>
             </>
         }
       </div>

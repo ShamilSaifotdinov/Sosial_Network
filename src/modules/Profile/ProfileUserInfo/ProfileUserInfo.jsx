@@ -53,7 +53,7 @@ const ProfileUserInfo = () => {
   */
   return (
     <div className={c.ProfileUserInfo}>
-        <UserAvatar />
+        {info.photoURL && <UserAvatar url={info.photoURL} />}
         <UserInformation {...info} />
     </div>
   );

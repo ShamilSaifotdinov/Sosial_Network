@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { v4 as uuid } from 'uuid'
 
-import { db } from "../../../hook/firebase"
+import { db, storage } from "../../../hook/firebase"
 import { getAuth, updateProfile } from "firebase/auth";
 import { doc, setDoc, getDoc } from "firebase/firestore";
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 const ProfileEdit = () => {
     const auth = getAuth();
@@ -17,6 +19,7 @@ const ProfileEdit = () => {
         employment: "",
         status: ""
     });
+    const [ file, setFile ] = useState("")
 
     useEffect(() => {
         async function fetchData () {
@@ -46,14 +49,22 @@ const ProfileEdit = () => {
     }
 
     const navigate = useHistory()
+    
     const update = async (event, form) => {
         console.log(form)
         event.preventDefault()
         try {
+            if (file) {
+                const fileName = file.name.split('.').pop();
+                const fileRef = ref(storage, `avatars/${uuid()}.${fileName}`);
+                console.log(fileRef)
+
+                const uploded = await uploadBytes(fileRef, file)
+                form.photoURL = await getDownloadURL(uploded.ref)
+            }
+            // console.log(form)
             // console.log(auth)
-            const docRef = await setDoc(doc(db, "users", user.uid), {
-                ...form
-            });
+            const docRef = await setDoc(doc(db, "users", user.uid), form);
             console.log("Document written: ", docRef);
             updateProfile(auth.currentUser, {
                 displayName: form.Name,
@@ -61,6 +72,7 @@ const ProfileEdit = () => {
             }).then(() => {
                 // Profile updated!
                 // ...
+                // console.log(auth)
             }).catch((error) => {
                 console.log(error)
                 throw Error ("Error updating profile: ", error);
@@ -79,11 +91,11 @@ const ProfileEdit = () => {
                 <label className="login-form_item" htmlFor="Name">Имя</label>
                 <input name="Name" id="Name" onChange={handleChange} value={form.Name} required />
 
-                {/* <label className="login-form_item" htmlFor="photoURL">Аватар</label>
-                <input name="photoURL" id="photoURL" type="text" onChange={handleChange} value={form.photoURL} /> */}
+                <label className="login-form_item" htmlFor="photoURL">Аватар</label>
+                <input name="photoURL" id="photoURL" type="file" onChange={(event) => setFile(event.target.files[0])} />
 
                 <label className="login-form_item" htmlFor="birthday">Дата рождения</label>
-                <input name="birthday" id="birthday" type="text" onChange={handleChange} value={form.birthday} />
+                <input name="birthday" id="birthday" type="date" onChange={handleChange} value={form.birthday} />
 
                 <label className="login-form_item" htmlFor="city">Город</label>
                 <input name="city" id="city" type="text" onChange={handleChange} value={form.city} />
