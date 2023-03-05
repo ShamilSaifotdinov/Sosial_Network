@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { auth, db } from "../../../hook/firebase";
-import { getDocs, collection, query, where, orderBy, addDoc, onSnapshot, doc } from "firebase/firestore";
+import { getDocs, collection, query, where, orderBy, addDoc, onSnapshot, doc, getDoc } from "firebase/firestore";
 
 import c from "./DialogWindow.module.css";
 import DialogMessages from "./DialogMessages/DialogMessages";
@@ -25,6 +25,7 @@ const DialogWindow = () => {
         console.log(uid + " " + id)
 
         let foundChat
+        let members
 
         const querySnapshot = await getDocs(q);
         // console.log(querySnapshot)
@@ -32,18 +33,29 @@ const DialogWindow = () => {
           // doc.data() is never undefined for query doc snapshots
           // console.log(doc.id, " => ", doc.data());
           foundChat = doc.id
+          members = Object.keys(doc.data().members)
         });
 
-        return getMessages(foundChat)
+        return getMessages(foundChat, members)
       } catch (error) {
         alert("Query error: ", error)
         console.error("Query error: ", error)
       }
     }
-
-    async function getMessages(chat) {
+    async function getImages(members) {
+      // console.log(members)
+      var result = {}
+      for (const member of members) {        
+        const docUser = await getDoc(doc(db, "users", member))
+        result = {...result, [member]: docUser.data().photoURL}
+      }
+      // console.log(result)
+      return result
+    }
+    async function getMessages(chat, members) {
       if (chat) {
         setChatId(chat)
+        const photos = await getImages(members)
         // console.log("Chat ID: ", chat)
         const q = query(collection(db, `/chats/${chat}`, "messages"),
           orderBy("time")
@@ -54,7 +66,8 @@ const DialogWindow = () => {
 
           querySnapshot.forEach((doc) => {
             // console.log(doc.data())
-            arr.push({id: doc.id, ...doc.data()})
+            // console.log(photos[doc.data().uid])
+            arr.push({id: doc.id, ...doc.data(), photoURL: photos[doc.data().uid]})
           })
 
           setMessages(arr)
