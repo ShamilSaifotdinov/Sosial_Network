@@ -27,12 +27,15 @@ const App = () => {
               <Header />
               <div className='wrapper'>
                 <NavigationSideBar />
-                <Route path="/edit" component={ProfileEdit} />
-                <Route path="/profile" component={Profile} />
-                <Route path="/messages" component={Messages} />
-                <Route path="/news" component={News} />
-                <Route path="/music" component={Music} />
-                <Route path="/settings" component={Settings} />
+                <Switch>
+                  <Route path="/edit" component={ProfileEdit} />
+                  <Route path="/profile" component={Profile} />
+                  <Route path="/messages" component={Messages} />
+                  <Route path="/news" component={News} />
+                  <Route path="/music" component={Music} />
+                  <Route path="/settings" component={Settings} />
+                  <Route path="/:id" component={Profile} />
+                </Switch>
               </div>
             </div>
             : <>

@@ -1,13 +1,13 @@
 import React from 'react';
 import c from "./ProfileHat.module.css";
 import ProfileHatImage from "./../../../img/ProfileHatImage.jpg"
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
-const ProfileHat = () => {
+const ProfileHat = ({id}) => {
   return (
-    <div className={c.ProfileHat}>      
-        <NavLink to="/edit" activeClassName={c.active}>Изменить</NavLink>
+    <div className={c.ProfileHat}>
+        {!id && <Link to="/edit">Изменить</Link>}
         <img src={ProfileHatImage} />
     </div>
   );

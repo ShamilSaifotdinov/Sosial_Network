@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import c from "./Messages.module.css";
 import UserContacts from "./UserContacts/UserContacts";
 import DialogWindow from "./DialogWindow/DialogWindow";
-import DialogWindowShimova from "./DialogWindowShimova/DialogWindowShimova";
+// import DialogWindowShimova from "./DialogWindowShimova/DialogWindowShimova";
 import { BrowserRouter, Route } from 'react-router-dom';
 
 

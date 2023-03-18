@@ -45,9 +45,12 @@
     width: 100%;
     /* height: 10%; */
 }
-
-.DialogMessages .OponentMessage img {
+.DialogMessages .OponentMessage a {
     width: 8%;
+}
+.DialogMessages .OponentMessage img {
+    width: 100%;
+    box-sizing: border-box;
     /* height: 80%; */
     border-radius: 50%;
     border: 3px solid #009D91;

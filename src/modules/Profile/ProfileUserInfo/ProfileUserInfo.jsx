@@ -8,9 +8,9 @@ import c from "./ProfileUserInfo.module.css";
 import UserAvatar from "./UserAvatar/UserAvatar";
 import UserInformation from "./UserInformation/UserInformation"
 
-const ProfileUserInfo = () => {
+const ProfileUserInfo = ({id}) => {
   const auth = getAuth();
-  const user = auth.currentUser;
+  const user = id ? { uid: id } : auth.currentUser;
 
   const [ info, setInfo ] = useState({    
     Name: user.displayName ? user.displayName : "",
@@ -38,7 +38,7 @@ const ProfileUserInfo = () => {
         }
     }
     fetchData()
-}, [])
+}, [id])
 
   /*
   if (user !== null) {
