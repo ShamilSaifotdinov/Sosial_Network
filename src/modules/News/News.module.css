@@ -1,6 +1,19 @@
 .News {
     width: 75%;
-    height: 500px;
-    background-color: black;
-    margin: 0 0 0 5%;
+    height: calc(100vh - 60px - 20px);
+    background-color: white;
+    padding: 16px;
+    box-sizing: border-box;
+    border-radius: 16px;
+}
+.News svg {
+    width: 48px;
+}
+
+.News .user-list li {
+    list-style-type: none;
+}
+
+.News .user-list input {
+    margin-right: 16px;
 }

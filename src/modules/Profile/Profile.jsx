@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import c from "./Profile.module.css";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import ProfileHat from "./ProfileHat/ProfileHat";
 import ProfileUserInfo from "./ProfileUserInfo/ProfileUserInfo";
 import ProfileUserPosts from "./ProfileUserPosts/ProfileUserPosts";
+import { auth } from '../../hook/firebase';
 
 
-const Profile = () => { 
+const Profile = () => {
   const {id} = useParams()
-  console.log(id)
+  const history = useHistory()
+  // console.log(id)
+
+  useEffect(() => {
+    if (id === auth.currentUser.uid) history.push("/profile")
+  })
   
   return (
     <div className={c.Profile}>

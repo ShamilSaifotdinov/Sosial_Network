@@ -3,8 +3,8 @@ import c from "./ProfileUserPosts.module.css";
 
 import { auth, db } from "../../../hook/firebase";
 // import Avatar1 from "./../../../img/Avatar1.jpg"
-import { collection, orderBy, query, onSnapshot, Timestamp, limit } from 'firebase/firestore';
-import { Post } from './Post';
+import { collection, orderBy, query, onSnapshot } from 'firebase/firestore';
+import { Post } from '../../Post/Post';
 import { NewPost } from './NewPost';
 
 
@@ -17,14 +17,13 @@ const ProfileUserPosts = ({id}) => {
             try {
                 const q = query(collection(db, `users/${uid}/posts`), orderBy("postingTime", "desc"))
 
-                const unsub = onSnapshot(q, (querySnapshot) => {
+                /*const unsub = */onSnapshot(q, (querySnapshot) => {
                     let postsId = []
                     // console.log(querySnapshot)
                     querySnapshot.forEach((doc) => {
                         // doc.data() is never undefined for query doc snapshots
                         // console.log(doc.id, " => ", doc.data());
-                        // let timestamp = doc.data().postingTime
-                        // console.log("id: " + doc.id + ", time: " + new Timestamp(timestamp.seconds, timestamp.nanoseconds).toDate())
+                        // console.log("id: " + doc.id + ", time: " + TStoDate(doc.data().postingTime))
                         postsId.unshift(doc.id)
                     });
 

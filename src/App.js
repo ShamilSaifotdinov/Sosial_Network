@@ -35,13 +35,19 @@ const App = () => {
                   <Route path="/music" component={Music} />
                   <Route path="/settings" component={Settings} />
                   <Route path="/:id" component={Profile} />
+                  <Route path="*">
+                    <Redirect to="/messages" />
+                  </Route>
                 </Switch>
               </div>
             </div>
             : <>
               <Switch>
                 <Route path="/register" component={Register} />
-                <Route path="*" component={Login} />
+                <Route path="/login" component={Login} />
+                <Route path="*">
+                  <Redirect to="/login" />
+                </Route>
               </Switch>
             </>
         }

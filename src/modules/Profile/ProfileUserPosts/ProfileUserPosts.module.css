@@ -20,7 +20,10 @@
     width: 100%;
     min-height: 50px;
     height: auto;
-    background-color: rgb(218, 218, 218);;
+    background-color: rgb(218, 218, 218);
+    padding: 16px;
+    border-radius: 48px;
+    box-sizing: border-box;
 }
 
 .ProfileUserPosts .CreateNewPost .SubmitButton {
@@ -37,46 +40,4 @@
     display: flex;
     flex-direction: column-reverse;
     width: 90%;
-}
-
-.ProfileUserPosts .AllPosts .Post {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 1% 0;
-    width: 100%;
-    height: auto;
-
-    border: 2px solid black;
-    border-radius: 1rem;
-}
-.ProfileUserPosts .Post img {
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    margin: 1%;
-    border: 5px solid #009D91;
-    transition: 1s;
-}
-
-.ProfileUserPosts .Post img:hover {
-    border: 5px solid #D2006B;
-    transition: 1s;
-}
-
-.ProfileUserPosts .Post .UserPostMessage {
-    display: flex;
-    align-items: center;
-    font-size: 24px;
-    width: 90%;
-    height: 100%;
-}
-
-.ProfileUserPosts .Post .DeletePostBtn {
-    background: none;
-    border: none;
-}
-
-.ProfileUserPosts .Post .DeletePostBtn svg {
-    width: 48px;
 }

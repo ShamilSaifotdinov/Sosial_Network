@@ -27,7 +27,7 @@ const ProfileUserInfo = ({id}) => {
     async function fetchData () {
         const docSnap = await getDoc(doc(db, "users", user.uid));
         if (docSnap.exists()) {
-            console.log("Document data:", docSnap.data());
+            // console.log("Document data:", docSnap.data());
             setInfo({
                 ...info,
                 ...docSnap.data()

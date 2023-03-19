@@ -12,8 +12,6 @@
     border: 3px solid #009D91;
     width: 80%;
     height: 40%;
-    padding: 16px;
-    box-sizing: border-box;
 }
 
 .DialogInputField .Send {

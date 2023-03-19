@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import c from "./ProfileUserPosts.module.css";
-// import Avatar1 from "./../../../img/Avatar1.jpg"
-import { ReactComponent as DeleteIcon } from "./../../../img/trash-alt.svg"
+import c from "./Post.module.css";
+import Avatar1 from "../../img/Avatar1.jpg"
+import { ReactComponent as DeleteIcon } from "./../../img/trash-alt.svg"
 import { doc, getDoc, deleteDoc } from 'firebase/firestore';
-import { auth, db } from '../../../hook/firebase';
+import { auth, db } from '../../hook/firebase';
+import { LocaleDate, LocaleTime, TStoDate } from '../../hook/timeTo';
 
 export const Post = ({ id, profileId }) => {
     const { uid } = auth.currentUser;
     const [post, setPost] = useState({})
     const [creator, setCreator] = useState({})
 
-    // console.log(id)
+    // console.log(post)
 
     useEffect(() => {
         async function getPost() {
@@ -18,6 +19,7 @@ export const Post = ({ id, profileId }) => {
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
                 // console.log("Document data:", docSnap.data());
+                // console.log("Date: ", LocaleDate(TStoDate(docSnap.data().creationTime)), LocaleTime(TStoDate(docSnap.data().creationTime)))
                 setPost(docSnap.data())
                 getCreator(docSnap.data().creator)
             } else {
@@ -66,8 +68,15 @@ export const Post = ({ id, profileId }) => {
                 {!profileId && <button className={c.DeletePost} type="submit"><DeleteIcon /></button>}
             </div>
             : <div className={c.Post}>
-                {creator.photoURL && <img src={creator.photoURL} className={c.UserPostAvatar} />}
-                <span className={c.UserPostMessage}>{post.text}</span>
+                <a href={`/${post.creator}`}>
+                    <img alt="avatar" src={creator.photoURL || Avatar1} className={c.UserPostAvatar} />
+                </a>
+                <div>
+                    <time dateTime={TStoDate(post.creationTime).toISOString()}>{
+                        LocaleDate(TStoDate(post.creationTime)) + " " + LocaleTime(TStoDate(post.creationTime))
+                    }</time>
+                    <p className={c.UserPostMessage}>{post.text}</p>
+                </div>
                 {!profileId && <button className={c.DeletePostBtn} type="submit" onClick={deletePost}><DeleteIcon /></button>}
             </div>
     )

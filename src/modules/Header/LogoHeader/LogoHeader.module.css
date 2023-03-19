@@ -1,9 +1,9 @@
 .LogoHeader {
     /* margin: 0 0 0 5%; */
-    width: 56px;
+    height: 80%;
 }
 
 .LogoHeader img {
-    width: 100%;
+    height: 100%;
     /* height: 100%; */
 }

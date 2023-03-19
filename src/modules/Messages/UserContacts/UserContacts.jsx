@@ -68,9 +68,8 @@ const UserContacts = () => {
 
   return (
     <div className={c.UserContacts}>
-      <span>Диалоги</span>
+      <h1>Диалоги</h1>
       <DialogSearch />{/*url={url}*/}
-      <hr></hr>
       <ul>
         {
           chats

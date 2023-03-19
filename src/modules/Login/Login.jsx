@@ -4,10 +4,11 @@ import { useState } from "react"
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../hook/firebase";
 import './Login.css'
-import { Link, Route } from "react-router-dom";
+import { Link, Route, useHistory } from "react-router-dom";
 import Register from "./Register";
 
 export default function Login() {
+    const navigate = useHistory()
     const [form, setForm] = useState({
         Email: "",
         Password: ""
@@ -29,6 +30,8 @@ export default function Login() {
                 const user = userCredential.user;
                 // ...
                 // console.log(auth)
+                
+                navigate.push("/messages");
             })
             .catch((error) => {
                 const errorCode = error.code;

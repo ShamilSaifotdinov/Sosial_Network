@@ -1,6 +1,8 @@
 .NavigationSideBar {
     width: 20%;
-    height: 500px;
+    height: min-content;
+    padding-block: 16px;
+    border-radius: 16px;
     background-color: #009D91;
     display: flex;
     flex-direction: column;
@@ -14,15 +16,16 @@
     text-transform: uppercase;
     font-size: 24px;
     line-height: 2;
-    background-color: #D2006B;
-    width: 80%;
+    width: 100%;
     text-align: center;
     margin: auto;
 }
 
 .NavigationSideBar a:hover {
-    color: #009D91;
+    /* color: #009D91; */
+    background-color: #D2006B;
 }
 .NavigationSideBar a.active {
-    color: #009D91;
+    /* color: #009D91; */
+    background-color: #D2006B;
 }

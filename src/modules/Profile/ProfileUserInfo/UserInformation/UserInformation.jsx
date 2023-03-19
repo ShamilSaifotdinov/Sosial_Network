@@ -1,4 +1,5 @@
 import React from 'react';
+import { LocaleDate } from '../../../../hook/timeTo';
 import c from "./UserInformation.module.css";
 
 const UserInformation = ({ Name, birthday, city, employment, status }) => {
@@ -9,7 +10,7 @@ const UserInformation = ({ Name, birthday, city, employment, status }) => {
             <span className={c.status}>{status}</span>
         </div>
         <div className={c.UserSubInfo}>
-            {birthday && <span>День рождения:  <span className={c.BirthDate, c.Inf}>{new Date(birthday).toLocaleString("ru-RU", dateOption)}</span></span>}
+            {birthday && <span>День рождения:  <span className={c.BirthDate, c.Inf}>{LocaleDate(birthday)}</span></span>}
             {city && <span>Город: <span className={c.Town, c.Inf}>{city}</span></span>}
             {employment && <span>Место учёбы/работы: <span className={c.Education_work, c.Inf}>{employment}</span></span>}
         </div>
@@ -18,7 +19,3 @@ const UserInformation = ({ Name, birthday, city, employment, status }) => {
 }
 
 export default UserInformation;
-
-const dateOption = {
-  year: 'numeric', month: 'long', day: 'numeric'
-}
