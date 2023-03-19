@@ -45,6 +45,7 @@ const App = () => {
               <Switch>
                 <Route path="/register" component={Register} />
                 <Route path="/login" component={Login} />
+                <Route path="/:id" component={Login} />
                 <Route path="*">
                   <Redirect to="/login" />
                 </Route>
