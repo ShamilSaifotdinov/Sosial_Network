@@ -7,7 +7,7 @@ import { getDocs, collection, query, where, documentId, onSnapshot } from "fireb
 
 import DialogSearch from '../DialogSearch/DialogSearch';
 
-const UserContacts = () => {
+const UserContacts = ({ match }) => {
   const { uid } = auth.currentUser;
   const [chats, setChats] = useState([])
 
@@ -74,7 +74,7 @@ const UserContacts = () => {
         {
           chats
             ? chats.map(chat =>
-              <li key={chat.uid}><NavLink to={`/${chat.uid}`} activeClassName={c.active}>{chat.Name}</NavLink></li>)
+              <li key={chat.uid}><NavLink to={`${match.path}/${chat.uid}`} activeClassName={c.active}>{chat.Name}</NavLink></li>)
             : <></>
         }
         {/* <li><NavLink to={`${url}/5ygh1v7qlcapds1gekke2cg0sye2`} activeClassName={c.active}>Владимир Владимирович</NavLink></li> */}

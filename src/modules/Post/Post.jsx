@@ -5,6 +5,7 @@ import { ReactComponent as DeleteIcon } from "./../../img/trash-alt.svg"
 import { doc, getDoc, deleteDoc } from 'firebase/firestore';
 import { auth, db } from '../../hook/firebase';
 import { LocaleDate, LocaleTime, TStoDate } from '../../hook/timeTo';
+import { Link } from 'react-router-dom';
 
 export const Post = ({ id, profileId }) => {
     const { uid } = auth.currentUser;
@@ -68,9 +69,9 @@ export const Post = ({ id, profileId }) => {
                 {!profileId && <button className={c.DeletePost} type="submit"><DeleteIcon /></button>}
             </div>
             : <div className={c.Post}>
-                <a href={`/${post.creator}`}>
+                <Link to={`/${post.creator}`}>
                     <img alt="avatar" src={creator.photoURL || Avatar1} className={c.UserPostAvatar} />
-                </a>
+                </Link>
                 <div>
                     <time dateTime={TStoDate(post.creationTime).toISOString()}>{
                         LocaleDate(TStoDate(post.creationTime)) + " " + LocaleTime(TStoDate(post.creationTime))

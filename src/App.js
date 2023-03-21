@@ -35,7 +35,7 @@ const App = () => {
                   <Route path="/music" component={Music} />
                   <Route path="/settings" component={Settings} />
                   <Route path="/:id" component={Profile} />
-                  <Route path="*">
+                  <Route exact path="/">
                     <Redirect to="/messages" />
                   </Route>
                 </Switch>
@@ -44,11 +44,7 @@ const App = () => {
             : <>
               <Switch>
                 <Route path="/register" component={Register} />
-                <Route path="/login" component={Login} />
-                <Route path="/:id" component={Login} />
-                <Route path="*">
-                  <Redirect to="/login" />
-                </Route>
+                <Route path="*" component={Login} />
               </Switch>
             </>
         }

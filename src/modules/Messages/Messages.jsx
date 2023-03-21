@@ -6,15 +6,15 @@ import DialogWindow from "./DialogWindow/DialogWindow";
 import { BrowserRouter, Route } from 'react-router-dom';
 
 
-const Messages = () => {
+const Messages = ({ match }) => {
   return (
-    <BrowserRouter basename="/messages">
-      <div className={c.Messages}>
-        <UserContacts />        
-        <Route path={`/:id`} component={DialogWindow} />
-        {/* <Route path="/dialogwindowshimova" component={DialogWindowShimova} /> */}
-      </div>
-    </BrowserRouter>
+    <div className={c.Messages}>
+      <UserContacts match={match} />
+      <Route path={`${match.path}/:id`} component={DialogWindow} />
+      {/* <Route path="/dialogwindowshimova" component={DialogWindowShimova} /> */}
+    </div>
+    // <BrowserRouter basename="/messages">
+    // </BrowserRouter>
 
   );
 }
