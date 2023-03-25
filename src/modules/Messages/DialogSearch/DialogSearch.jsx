@@ -39,12 +39,11 @@ const DialogSearch = () => {
             <input type="search" placeholder="Найти собеседника..." onChange={(e) => handleChange(e.target.value)} />
             {
                 users.length !== 0
-                    ? <ul>
+                    && <ul>
                         {users.map(user =>
                             <li><NavLink to={`/${user.uid}`} activeClassName={c.active}>{user.Name}</NavLink></li>)}
                         <hr></hr>
                     </ul>
-                    : <></>
             }
         </div >
     )

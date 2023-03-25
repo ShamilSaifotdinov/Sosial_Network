@@ -1,7 +1,5 @@
 .Messages {
     width: 75%;
-    height: calc(100vh - 60px - 20px);
-    margin: 0 0 0 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;

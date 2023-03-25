@@ -1,10 +1,10 @@
 .News {
     width: 75%;
-    height: calc(100vh - 60px - 20px);
     background-color: white;
     padding: 16px;
     box-sizing: border-box;
     border-radius: 16px;
+    overflow: scroll;
 }
 .News svg {
     width: 48px;
