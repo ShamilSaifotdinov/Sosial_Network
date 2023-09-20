@@ -1,0 +1,18 @@
+.NewGroup .InputUsersGroup {
+    box-sizing: border-box;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #dbdbdb;
+    border-radius: 8px;
+    padding: 8px;
+    margin-bottom: 8px;
+}
+
+.NewGroup  li {
+    list-style-type: none;
+}
+
+.NewGroup  input {
+    margin-right: 16px;
+}

@@ -37,7 +37,7 @@ const DialogInputField = ({chatId, createChat}) => {
         placeholder="Напишите сообщение..." 
         onChange={(e) => setMessage(e.target.value)} 
       />
-      <button type="submit" className={c.Send}><img src={Send} /></button>
+      <button type="submit" className={c.Send}><img src={Send} alt="Send message"/></button>
     </form>
   );
 }

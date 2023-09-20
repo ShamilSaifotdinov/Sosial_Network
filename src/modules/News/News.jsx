@@ -24,6 +24,7 @@ const News = () => {
           console.log(users)
 
           if (users.length !== 0) {
+            // Перенести за if
             setSubs(users)
 
             let postsSubs = []

@@ -12,26 +12,26 @@
     /* padding-bottom: 15%; */
 }
 
-.UserContacts ul {
+.UserContacts .UserList {
     width: 100%;
     height: calc(100% - 38px - 48px);
     overflow: auto;
 }
 
-.UserContacts li {
+.UserContacts .UserList li {
     overflow: hidden;
     /* height: 36px; */
     margin-top: 20%;
     /* list-style-type: none; */
 }
 
-.UserContacts li:before {
+.UserContacts .UserList li:before {
     /* content: "◆"; */
     color: #009D91;
     padding-right: 5%;
 }
 
-.UserContacts li:hover:before {
+.UserContacts .UserList li:hover:before {
     /* content: "◆"; */
     color: #D2006B;
 }
@@ -52,10 +52,23 @@
     color: #D2006B;
 }
 
-.UserContacts input {
+.UserContacts .SearchUsers {
     border-radius: 48px;
     border: 3px solid #009D91;
-    width: 100%;
+    width: 80%;
     height: 48px;
     padding: 16px;
+}
+
+.UserContacts .NewChat {
+    display: flex;
+    justify-content: space-between;
+}
+
+.UserContacts .CreateGroup {
+    background: none;
+    border: none;
+    fill: #009D91;
+    height: 48px;
+    width: 48px;
 }
